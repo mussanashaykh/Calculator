@@ -1,7 +1,9 @@
 let result = document.getElementById("result");
 
 function appendToResult(value) {
-    result.value += value;
+    if (result.value == "Invalid Operation")
+        return result.value = value;
+    return result.value += value;
 }
 
 function clearResult() {
@@ -9,9 +11,9 @@ function clearResult() {
 }
 
 function calculate() {
-    try {
+    if (result.value != "") {
         result.value = eval(result.value);
-    } catch (error) {
-        result.value = "Error";
+    } else {
+        result.value = "Invalid Operation";
     }
 }
